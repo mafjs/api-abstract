@@ -1,0 +1,63 @@
+{
+  "name": "maf-api-abstract",
+  "version": "0.0.0",
+  "description": "node.js abstract api",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf package coverage .nyc_output npm-debug.log",
+    "build": "./node_modules/.bin/babel src --out-dir ./package",
+    "build:for-test": "npm run build -- --plugins istanbul",
+    "build:package-json": "node ./scripts/copyPackageJson",
+    "dev": "npm run build -- --watch --plugins istanbul",
+    "test": "npm run build:for-test && ./node_modules/.bin/tap test/unit -J --coverage",
+    "test:fast": "./node_modules/.bin/tap test/unit -J",
+    "test:cov": "npm test -- --coverage-report=html",
+    "postversion": "git push origin && git push --tags",
+    "prepublish": "in-publish && echo 'use \"npm run _publish\"' && exit 1 || not-in-publish",
+    "_publish": "npm run clean && npm run build && npm run build:package-json && cd ./package && npm publish",
+    "pu": "npm run _publish"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mafjs/api-abstract.git"
+  },
+  "keywords": [
+    "maf"
+  ],
+  "author": "alekzonder <alekzonder@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mafjs/api-abstract/issues"
+  },
+  "homepage": "https://github.com/mafjs/api-abstract#readme",
+  "devDependencies": {
+    "babel-cli": "6.x",
+    "babel-plugin-istanbul": "4.x",
+    "babel-preset-es2015": "6.x",
+    "coveralls": "2.x",
+    "eslint": "3.x",
+    "in-publish": "^2.0.0",
+    "proxyquire": "1.x",
+    "tap": "10.x"
+  },
+  "dependencies": {
+    "joi": "10.2.x",
+    "lodash": "4.17.x",
+    "maf-chain": "^0.0.1",
+    "maf-error": "0.9.x",
+    "uuid": "3.0.x"
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "src/*.js",
+      "src/methods/**/*.js"
+    ],
+    "exclude": [
+      "src/modules/kind-of.js"
+    ]
+  }
+}
