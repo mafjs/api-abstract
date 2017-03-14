@@ -9,10 +9,7 @@ var BaseApiError = require('./Error');
 
 var Chain = require('maf-chain');
 
-var ApiError = BaseApiError.extendCodes({
-    NO_MODEL_NAME: 'maf/Api/CrudAbstract: no model name in constructor',
-    NO_MODEL: 'maf/Api/CrudAbstract: no model with name = %name%'
-});
+var ApiError = BaseApiError.extendCodes({});
 
 
 class ApiAbstract extends Abstract {

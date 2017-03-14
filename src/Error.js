@@ -7,7 +7,9 @@ var ErrorCodes = {
     ALREADY_EXISTS: 'document already exists',
     NOT_FOUND: 'not found',
     INVALID_DATA: 'invalid data',
-    FORBIDDEN: 'forbidden'
+    FORBIDDEN: 'forbidden',
+    NO_MODEL_NAME: 'no model name in constructor',
+    NO_MODEL: 'no model with name = %name%'
 };
 
 var ApiError = mafError.create('ApiError', ErrorCodes);
