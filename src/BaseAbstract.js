@@ -192,6 +192,10 @@ class BaseAbstract {
      * @return {Object|Array}
      */
     clearSystemFields (data) {
+        if (data === null || typeof data === 'undefined') {
+            return data;
+        }
+
         if (!this._systemFields) {
             throw new this.Error(this.Error.CODES.NO_SYSTEM_FIELDS);
         }
