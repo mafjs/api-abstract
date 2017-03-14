@@ -260,7 +260,7 @@ class ApiAbstract extends Abstract {
 
             var validData, doc;
 
-            this._validate(data, this._modificationSchema)
+            this._validate(data, this._modificationSchema())
             .then((data) => {
 
                 if (this._isEmptyData(data)) {
@@ -329,7 +329,7 @@ class ApiAbstract extends Abstract {
 
             var validData, doc;
 
-            this._validate(data, this._modificationSchema)
+            this._validate(data, this._modificationSchema())
             .then((data) => {
 
                 if (this._isEmptyData(data)) {
