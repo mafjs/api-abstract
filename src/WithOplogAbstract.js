@@ -23,6 +23,7 @@ class WithOpLogAbstract extends ApiAbstract {
                         creationDate: this._isoDate(),
                         creationTimestamp: this._time(),
                         entity: this.entity,
+                        docId: doc.id,
                         action: 'create',
                         old: null,
                         new: data,
@@ -62,6 +63,7 @@ class WithOpLogAbstract extends ApiAbstract {
                         creationDate: this._isoDate(),
                         creationTimestamp: this._time(),
                         entity: this.entity,
+                        docId: result.original._id,
                         action: 'update',
                         old: result.original,
                         new: result.updated
@@ -101,6 +103,7 @@ class WithOpLogAbstract extends ApiAbstract {
                         creationDate: this._isoDate(),
                         creationTimestamp: this._time(),
                         entity: this.entity,
+                        docId: id,
                         action: 'update',
                         old: result.original,
                         new: result.updated
