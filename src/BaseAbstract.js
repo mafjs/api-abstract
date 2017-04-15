@@ -139,7 +139,8 @@ class BaseAbstract {
 
             var joiOptions = {
                 convert: true,
-                abortEarly: false
+                abortEarly: false,
+                allowUnknown: false
             };
 
             if (options.allowUnknown) {
@@ -155,7 +156,7 @@ class BaseAbstract {
                         list.push({message: e.message, path: e.path, type: e.type});
                     });
 
-                    var e = new ApiError(this.Error.CODES.INVALID_DATA);
+                    var e = new ApiError(this.Error.CODES.INVALID_DATA, err);
                     e.list = list;
 
                     reject(e);

@@ -5,11 +5,7 @@ var uuid = require('uuid');
 
 var Abstract = require('./BaseAbstract');
 
-var BaseApiError = require('./Error');
-
 var Chain = require('maf-chain');
-
-var ApiError = BaseApiError.extendCodes({});
 
 
 class ApiAbstract extends Abstract {
@@ -25,7 +21,9 @@ class ApiAbstract extends Abstract {
 
         this.entity = null;
 
-        this.Error = ApiError;
+        this.Error = this.Error.extendCodes({
+
+        });
 
         this._modelName = modelName;
 
@@ -84,7 +82,7 @@ class ApiAbstract extends Abstract {
                         .bind({id: data.id})
                     );
                 } else {
-                    reject(ApiError.ensureError(error));
+                    reject(this.Error.ensureError(error));
                 }
 
             });
