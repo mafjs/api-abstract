@@ -107,6 +107,16 @@ class BaseAbstract {
         return (new Date()).getTime();
     }
 
+    /**
+     * get current date as ISOString
+     *
+     * @private
+     * @return {String}
+     */
+    _isoDate () {
+        return (new Date()).toISOString();
+    }
+
 
     /**
      * validate data by schema

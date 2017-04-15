@@ -62,8 +62,10 @@ class ApiAbstract extends Abstract {
                     data.id = uuid.v4();
                 }
 
-                data.creationDate = this._time();
+                data.creationDate = this._isoDate();
+                data.creationTimestamp = this._time();
                 data.modificationDate = null;
+                data.modificationTimestamp = null;
 
                 return this._model().insertOne(data);
             })
@@ -206,6 +208,45 @@ class ApiAbstract extends Abstract {
     }
 
     /**
+     * check doc by name and throw NOT_FOUND if not exists
+     *
+     * @param {String} name
+     * @param {Array} fields
+     * @return {Promise}
+     */
+    getExistingByName (name, fields) {
+
+        return new Promise((resolve, reject) => {
+            this.getByName(name, fields)
+                .then((result) => {
+                    if (!result) {
+                        return reject(new this.Error(this.Error.CODES.NOT_FOUND));
+                    }
+
+                    resolve(result);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+
+    }
+
+    /**
+     * get existsing doc by name and clear system fields
+     *
+     * @param {String} name
+     * @param {Array} fields
+     * @return {Promise}
+     */
+    getClearExistingByName (name, fields) {
+        return this.getExistingByName(name, fields)
+            .then((result) => {
+                return this.clearSystemFields(result);
+            });
+    }
+
+    /**
      * get document by name
      *
      * @param {*} id
@@ -235,6 +276,45 @@ class ApiAbstract extends Abstract {
 
         });
 
+    }
+
+    /**
+     * get doc by id and throw NOT_FOUND if not exists
+     *
+     * @param {*} id
+     * @param {Array} fields
+     * @return {Promise}
+     */
+    getExistingById (id, fields) {
+
+        return new Promise((resolve, reject) => {
+            this.getById(id, fields)
+                .then((result) => {
+                    if (!result) {
+                        return reject(new this.Error(this.Error.CODES.NOT_FOUND));
+                    }
+
+                    resolve(result);
+                })
+                .catch((error) => {
+                    reject(error);
+                });
+        });
+
+    }
+
+    /**
+     * get existsing doc by id and clear system fields
+     *
+     * @param {String} id
+     * @param {Array} fields
+     * @return {Promise}
+     */
+    getClearExistingById (id, fields) {
+        return this.getExistingById(id, fields)
+            .then((result) => {
+                return this.clearSystemFields(result);
+            });
     }
 
     /**
@@ -280,7 +360,8 @@ class ApiAbstract extends Abstract {
                     );
                 }
 
-                validData.modificationDate = this._time();
+                validData.modificationDate = this._isoDate();
+                validData.modificationTimestamp = this._time();
 
                 return this._model().update(
                     {
@@ -349,7 +430,8 @@ class ApiAbstract extends Abstract {
                     );
                 }
 
-                validData.modificationDate = this._time();
+                validData.modificationDate = this._isoDate();
+                validData.modificationTimestamp = this._time();
 
                 return this._model().update(
                     {
