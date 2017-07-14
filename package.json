@@ -47,7 +47,7 @@
     "joi": "10.4.x",
     "lodash": "4.17.x",
     "maf-chain": "^0.0.1",
-    "maf-error": "0.9.x",
+    "maf-error": "1.0.x",
     "uuid": "3.0.x"
   },
   "nyc": {
