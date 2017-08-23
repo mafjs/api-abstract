@@ -1,6 +1,6 @@
 {
   "name": "maf-api-abstract",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "node.js abstract api",
   "main": "index.js",
   "scripts": {
