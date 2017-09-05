@@ -1828,9 +1828,9 @@ lru-cache@^4.0.1:
     pseudomap "^1.0.2"
     yallist "^2.1.2"
 
-maf-chain@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/maf-chain/-/maf-chain-0.3.0.tgz#1aeabe30b48d9eafe7841fc0130f2c16f0e49d65"
+maf-chain@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/maf-chain/-/maf-chain-1.0.0.tgz#6449a222bdaa44fb53ae01defac573b28fea1864"
   dependencies:
     maf-error "^1.2.0"
 
