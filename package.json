@@ -46,7 +46,7 @@
   "dependencies": {
     "joi": "^10.6.0",
     "lodash": "4.17.x",
-    "maf-chain": "^1.0.0",
+    "maf-chain": "^1.1.0",
     "maf-error": "^1.2.0",
     "uuid": "^3.1.0"
   },
