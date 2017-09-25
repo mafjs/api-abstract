@@ -44,7 +44,7 @@
     "tap": "10.x"
   },
   "dependencies": {
-    "joi": "^10.6.0",
+    "joi": "^11.1.0",
     "lodash": "4.17.x",
     "maf-chain": "^1.1.0",
     "maf-error": "^1.2.0",
