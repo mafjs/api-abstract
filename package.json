@@ -41,7 +41,7 @@
     "eslint": "^4.7.1",
     "in-publish": "^2.0.0",
     "proxyquire": "1.x",
-    "tap": "10.x"
+    "tap": "11.x"
   },
   "dependencies": {
     "joi": "^10.6.0",
